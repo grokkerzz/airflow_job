@@ -1,0 +1,72 @@
+[
+    {
+        "index": 0,
+        "name": "Region",
+        "type": "string"
+    },
+    {
+        "index": 1,
+        "name": "Country",
+        "type": "string"
+    },
+    {
+        "index": 2,
+        "name": "ItemType",
+        "type": "string"
+    },
+    {
+        "index": 3,
+        "name": "SalesChannel",
+        "type": "string"
+    },
+    {
+        "index": 4,
+        "name": "OrderPriority",
+        "type": "string"
+    },
+    {
+        "index": 5,
+        "name": "OrderDate",
+        "type": "string"
+    },
+    {
+        "index": 6,
+        "name": "OrderID",
+        "type": "long"
+    },
+    {
+        "index": 7,
+        "name": "ShipDate",
+        "type": "string"
+    },
+    {
+        "index": 8,
+        "name": "UnitsSold",
+        "type": "long"
+    },
+    {
+        "index": 9,
+        "name": "UnitPrice",
+        "type": "double"
+    },
+    {
+        "index": 10,
+        "name": "UnitCost",
+        "type": "double"
+    },
+    {
+        "index": 11,
+        "name": "TotalRevenue",
+        "type": "double"
+    },
+    {
+        "index": 12,
+        "name": "TotalCost",
+        "type": "double"
+    },
+    {
+        "index": 13,
+        "name": "TotalProfit",
+        "type": "double"
+    }
+]

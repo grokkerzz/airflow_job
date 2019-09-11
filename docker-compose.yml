@@ -1,0 +1,56 @@
+version: '3.1'
+services:
+  postgres:
+    image: postgres:9.6
+    # restart: always
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=airflow
+      - POSTGRES_DB=airflow
+    ports:
+      - "5432:5432"
+  postgres_output:
+    image: postgres:9.6
+    # restart: always
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres_database
+    ports: 
+      - "5433:5433"
+  mysql_input:
+    image: mysql
+    command: --default-authentication-plugin=mysql_native_password
+    # restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=mysql
+    volumes:
+      - ./transfer/records:/tmp/records
+    ports:
+      - "3306:3306"
+  webserver:
+    image: grokkerzz/airflow_embulk:latest
+    build:
+      context: https://github.com/grokkerzz/airflow_embulk.git
+      dockerfile: Dockerfile
+    # restart: always
+    environment:
+      - LOAD_EX=n
+      - EXECUTOR=Local
+    depends_on:
+      - postgres
+      - postgres_output
+      - mysql_input
+    volumes:
+      - ./transfer/dags:/usr/local/airflow/dags
+      - ./transfer/datasources:/usr/local/airflow/datasources
+      - ./transfer/bashcommand:/usr/local/airflow/bashcommand
+    ports:
+      - "8080:8080"
+    command: webserver
+    healthcheck:
+      test: ["CMD-SHELL", "[ -f /usr/local/airflow/airflow-webserver.pid]"]
+      interval: 30s
+      timeout: 30s
+      retries: 3
+      

@@ -1,0 +1,7 @@
+in:
+  type: file
+  path_prefix: /usr/local/airflow/datasources/
+  parser: {type: csv_with_schema_file, schema_path: /usr/local/airflow/datasources/schema/csv_schema.json,
+    charset: UTF-8, newline: LF}
+out: {type: postgresql, host: 172.22.0.3, port: 5432, user: root, password: postgres,
+  database: postgres_database, table: sales_records, mode: insert}

@@ -1,0 +1,4 @@
+in: {type: mysql, host: 172.22.0.2, port: 3306, user: root, password: mysql, database: mysql_database,
+  table: sales_records, select: '*'}
+out: {type: postgresql, host: 172.22.0.3, port: 5432, user: root, password: postgres,
+  database: postgres_database, table: sales_records, mode: insert}
