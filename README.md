@@ -1,3 +1,2 @@
-# airflow_job
-```docker-compose up --build
-```
+ airflow_job
+```docker-compose up --build```
